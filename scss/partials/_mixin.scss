@@ -1,0 +1,109 @@
+@mixin btn($primary-5, $primary-1, $spacing, $transition, $radius, $primary-7) {
+  text-transform: uppercase;
+  background-color: $primary-5;
+  color: $primary-1;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: $spacing;
+  display: inline-block;
+  font-weight: 700;
+  transition: $transition;
+  font-size: 0.875rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: $radius;
+
+  &:hover {
+    color: $primary-1;
+    background-color: $primary-7;
+  }
+}
+
+@mixin section {
+  padding: 5rem 0;
+}
+
+@mixin section-title {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+@mixin section-center($max-width) {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+@media screen and (min-width: 992px) {
+  @mixin section-center {
+    width: 95vw;
+  }
+}
+
+@mixin layout-img($primary-5, $radius, $layout) {
+  display: block;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+    border: 0.25rem solid $primary-5;
+    top: 2rem;
+    @if $layout == about {
+      left: -2rem;
+    } @else {
+      right: -2rem;
+    }
+  }
+}
+
+@mixin underline-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin skill-value($width, $primary-5, $radius) {
+  width: #{$width};
+  background-color: $primary-5;
+  height: 1rem;
+  border-radius: $radius;
+}
+
+@mixin skill-text($width) {
+  width: calc(100% - #{$width});
+  float: right;
+}
+
+@mixin timeline-item($item, $primary-5) {
+  @if ($item == odd) {
+    border-right: 3px dashed $primary-5;
+    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 2rem;
+  } @else {
+    border-left: 3px dashed $primary-5;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem;
+  }
+  padding: 4rem 2rem;
+}
+
+@mixin number($item, $primary-4) {
+  @if ($item == odd) {
+    right: -20px;
+    top: 45%;
+  } @else {
+    top: 45%;
+    left: -20px;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: $primary-4;
+  position: absolute;
+}
